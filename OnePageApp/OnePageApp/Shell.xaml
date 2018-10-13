@@ -1,0 +1,65 @@
+﻿<controls:MetroWindow x:Class="OnePageApp.Shell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:OnePageApp"
+        xmlns:framework="clr-namespace:OnePageApp.Framework"
+        xmlns:regions="http://prismlibrary.com/"
+        regions:ViewModelLocator.AutoWireViewModel="True"
+        mc:Ignorable="d"
+        Title="One page app" 
+        WindowTransitionsEnabled="False"
+        WindowStartupLocation="CenterScreen"
+        ShowIconOnTitleBar="True"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True"
+        TitlebarHeight="36"
+        FontFamily="{StaticResource OnePageAppFont}"
+        NonActiveWindowTitleBrush="White"
+        BorderBrush="{DynamicResource AccentSelectedColorBrush}"
+        BorderThickness="1"
+        Height="730"
+        Width="1150"
+        Closing="MetroWindow_Closing">
+    <controls:MetroWindow.Resources>
+        <Color x:Key="onePageAppGray">#f2f2f2</Color>
+        <SolidColorBrush x:Key="onePageAppGrayBrush" Color="{StaticResource onePageAppGray}" />
+    </controls:MetroWindow.Resources>
+    <controls:MetroWindow.LeftWindowCommands>
+        <controls:WindowCommands ShowSeparators="False">
+            <StackPanel Orientation="Horizontal">
+                <Border BorderBrush="{StaticResource onePageAppGrayBrush}" BorderThickness="0,0,1.5,0">
+                    <Image Source="Images/logo.png"
+                       Stretch="None"
+                       Width="79"
+                       RenderOptions.BitmapScalingMode="NearestNeighbor"
+                       SnapsToDevicePixels="True" 
+                       Margin="15,10,10,10"></Image>
+                </Border>
+                <Button x:Name="GoBackButton"
+                        IsEnabled="{Binding IsEnabled}"
+                        Visibility="{Binding NavigateVisibility}"
+                        Command="{Binding NavigateCommand}">
+                    <iconPacks:PackIconMaterial Kind="ArrowLeft" />
+                </Button>
+            </StackPanel>
+        </controls:WindowCommands>
+    </controls:MetroWindow.LeftWindowCommands>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="107"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="{StaticResource onePageAppGrayBrush}" BorderThickness="0,1.5,1.5,0" Grid.Column="0">
+            <ContentControl regions:RegionManager.RegionName="{x:Static framework:RegionConstants.MenuRegion}"></ContentControl>
+        </Border>
+        <Border BorderBrush="{StaticResource onePageAppGrayBrush}" BorderThickness="0,1.5,0,0" Grid.Column="1">
+            <ContentControl regions:RegionManager.RegionName="{x:Static framework:RegionConstants.RightRegion}"></ContentControl>
+        </Border>
+        <ContentControl Background="{x:Null}" regions:RegionManager.RegionName= "{x:Static framework:RegionConstants.AllScreenRegion}" Grid.ColumnSpan="2" Padding="20"></ContentControl>
+    </Grid>
+</controls:MetroWindow>    
+    

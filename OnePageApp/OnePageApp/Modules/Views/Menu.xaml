@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="OnePageApp.Modules.Views.Menu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewModels="clr-namespace:OnePageApp.Modules.ViewModels"
+             xmlns:local="clr-namespace:OnePageApp.Modules.Views"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+
+        <ContentControl x:Key="IconContentControl" x:Shared="False"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Focusable="False"
+                        Content="{Binding Icon}">
+            <ContentControl.RenderTransform>
+                    <ScaleTransform CenterX="5" CenterY="-24" ScaleX="1.8" ScaleY="1.8"></ScaleTransform>
+            </ContentControl.RenderTransform>
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=IsSelected}" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource AccentSelectedColorBrush}"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+
+        <TextBlock x:Key="TextBlockContentControl" x:Shared="False" HorizontalAlignment="Center"
+                   TextAlignment ="Center"
+                   FontSize="12"
+                   FontFamily="Open Sans"
+                   TextWrapping="WrapWithOverflow"
+                   Margin="20,45,20,0"
+                   Text="{Binding Text}">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=IsSelected}" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource AccentSelectedColorBrush}"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
+        <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type viewModels:MenuItem}">
+            <StackPanel Orientation="Vertical" Margin="0">
+                <ContentPresenter Content="{StaticResource IconContentControl}"/>
+                <ContentPresenter Content="{StaticResource TextBlockContentControl}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="MenuOptionsItemTemplate" DataType="{x:Type viewModels:MenuItem}">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <ContentPresenter Content="{StaticResource IconContentControl}" />
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <mah:HamburgerMenu
+            OpenPaneLength="107"
+            DisplayMode="CompactInline"
+            PaneBackground="Transparent"
+            IsPaneOpen="True"
+            HamburgerHeight="0"
+            HamburgerWidth="0"
+            HamburgerVisibility="Collapsed"
+            IsEnabled="{Binding IsEnabled}"
+            ItemsSource="{Binding Menu}"
+            ShowSelectionIndicator="True"
+            OptionsItemsSource="{Binding OptionsMenu}"
+            ItemTemplate="{StaticResource MenuItemTemplate}"
+            OptionsItemTemplate="{StaticResource MenuOptionsItemTemplate}"
+            SelectedIndex="{Binding SelectedIndex}"
+            SelectedOptionsIndex="{Binding SelectedOptionsIndex}"
+            ItemClick="HamburgerMenu_OnItemClick"
+            OptionsItemClick="HamburgerMenu_OnItemClick"
+            Style="{StaticResource OnePageAppHamburgherMenu}">
+        <mah:HamburgerMenu.Resources>
+            <system:Double x:Key="HamburgerMenuSelectionIndicatorThemeHeight">100</system:Double>
+            <system:Double x:Key="HamburgerMenuSelectionIndicatorThemeWidth">4</system:Double>
+        </mah:HamburgerMenu.Resources>
+    </mah:HamburgerMenu>
+
+</UserControl>
