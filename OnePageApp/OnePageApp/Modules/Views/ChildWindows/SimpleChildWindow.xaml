@@ -21,7 +21,8 @@
         <ComboBox x:Name="textBox" HorizontalAlignment="Center" 
                   Grid.Row="1"
                   VerticalAlignment="Center" Width="300"
-                  ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}"
+                  ItemsSource="{Binding Items}" 
+                  SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                   IsEditable="True"
                   IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False" TextSearch.TextPath="Text">
             <ComboBox.ItemTemplate>

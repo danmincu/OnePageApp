@@ -4,6 +4,7 @@ using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
 using OnePageApp.Framework;
 using OnePageApp.Modules.ViewModels;
+using OnePageApp.Services;
 using Prism.Modularity;
 
 namespace OnePageApp
@@ -34,6 +35,9 @@ namespace OnePageApp
                     a.Load();
                     return a;
                 }));
+            // simulate a single instance
+            Container.RegisterType<IUserService, UserServiceExample>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<IUserLdapService, UserLdapServiceExample>(new ContainerControlledLifetimeManager());
 
             //// in order to share the same model between Views you I need to make view models as singleton
             //// Note: a better approach would be to separated the models and just pass data around

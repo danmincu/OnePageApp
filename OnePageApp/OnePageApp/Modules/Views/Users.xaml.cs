@@ -6,9 +6,9 @@ namespace OnePageApp.Modules.Views
     /// <summary>
     /// Interaction logic for Accounts.xaml
     /// </summary>
-    public partial class Accounts : UserControl
+    public partial class Users : UserControl
     {
-        public Accounts(AccountsViewModel model)
+        public Users(UsersViewModel model)
         {
             InitializeComponent();
             this.DataContext = model;

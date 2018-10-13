@@ -109,15 +109,24 @@
     <Compile Include="Modules\ScreensModule.cs" />
     <Compile Include="Modules\StartupModule.cs" />
     <Compile Include="Modules\ViewModels\AccountDisplayItem.cs" />
-    <Compile Include="Modules\ViewModels\AccountsViewModel.cs" />
+    <Compile Include="Modules\ViewModels\EditPermissionModel.cs" />
+    <Compile Include="Modules\ViewModels\AddUserModel.cs" />
+    <Compile Include="Modules\ViewModels\PermissionViewModel.cs" />
+    <Compile Include="Modules\ViewModels\UsersViewModel.cs" />
     <Compile Include="Modules\ViewModels\BaseSyncViewModel.cs" />
     <Compile Include="Modules\ViewModels\ChildWindowLauncher.cs" />
     <Compile Include="Modules\ViewModels\Converters.cs" />
     <Compile Include="Modules\ViewModels\MenuItem.cs" />
     <Compile Include="Modules\ViewModels\MenuViewModel.cs" />
     <Compile Include="Modules\ViewModels\SimpleChildModel.cs" />
-    <Compile Include="Modules\Views\Accounts.xaml.cs">
-      <DependentUpon>Accounts.xaml</DependentUpon>
+    <Compile Include="Modules\Views\ChildWindows\EditPermissionWindow.xaml.cs">
+      <DependentUpon>EditPermissionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Views\ChildWindows\AddUserWindow.xaml.cs">
+      <DependentUpon>AddUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Views\Users.xaml.cs">
+      <DependentUpon>Users.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\Views\ChildWindows\SimpleChildWindow.xaml.cs">
       <DependentUpon>SimpleChildWindow.xaml</DependentUpon>
@@ -134,6 +143,8 @@
     <Compile Include="Modules\Views\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\IUserService.cs" />
+    <Compile Include="Services\UserServiceExample.cs" />
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
@@ -151,7 +162,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Modules\Views\Accounts.xaml">
+    <Page Include="Modules\Views\ChildWindows\EditPermissionWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\Views\ChildWindows\AddUserWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\Views\Users.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

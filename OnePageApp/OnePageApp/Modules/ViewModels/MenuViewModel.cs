@@ -19,7 +19,7 @@ namespace OnePageApp.Modules.ViewModels
         {
             this.eventAggregator = eventAggregator;
 
-            Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.CalendarRegular }, Text = "Accounts", NavigationDestination = () => this.NavigateTo(AppMenu, 0) });
+            Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.UserEditSolid }, Text = "Users", NavigationDestination = () => this.NavigateTo(AppMenu, 0) });
             Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.UserCogSolid }, Text = "Permissions", NavigationDestination = () => this.NavigateTo(AppMenu, 1) });
             Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.FileContractSolid }, Text = "Contracts", NavigationDestination = () => this.NavigateTo(AppMenu, 2) });
             OptionsMenu.Add(new MenuItem() { Icon = Application.Current.FindResource("SettingsIcon"), Text = "Settings", NavigationDestination = () => this.NavigateTo(AppOptionsMenu, 0) });
@@ -48,7 +48,7 @@ namespace OnePageApp.Modules.ViewModels
                     SelectedOptionsIndex = 0;
                     break;
 
-                case nameof(Views.Accounts):
+                case nameof(Views.Users):
                     SelectedIndex = 0;
                     SelectedOptionsIndex = -1;
                     break;
@@ -71,7 +71,7 @@ namespace OnePageApp.Modules.ViewModels
             }
         }
 
-        private string[] navigationArray = new[] { nameof(Views.Accounts), nameof(Views.Permissions), nameof(Views.Contracts) };
+        private string[] navigationArray = new[] { nameof(Views.Users), nameof(Views.Permissions), nameof(Views.Contracts) };
         private string[] navigationOptionsArray = new[] { nameof(Views.Settings) };
 
         private object NavigateTo(object sender, int index)

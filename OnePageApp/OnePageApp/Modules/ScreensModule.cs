@@ -18,7 +18,7 @@ namespace OnePageApp.Modules
 
         public void Initialize()
         {
-            _container.RegisterTypeForNavigation<Views.Accounts>();
+            _container.RegisterTypeForNavigation<Views.Users>();
             _container.RegisterTypeForNavigation<Views.Permissions>();
             _container.RegisterTypeForNavigation<Views.Contracts>();
             _container.RegisterTypeForNavigation<Views.Settings>();

@@ -4,9 +4,112 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:OnePageApp.Modules.Views"
+             xmlns:dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"             
+             xmlns:viewModels="clr-namespace:OnePageApp.Modules.ViewModels"
+             xmlns:framework="clr-namespace:OnePageApp.Framework"
+             dialogs:DialogParticipation.Register="{Binding}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <viewModels:BooleanToVisibilityConverter x:Key="b2v" True="Visible" False="Collapsed" />
+        <viewModels:BooleanToVisibilityConverter x:Key="b2vinv" True="Collapsed" False="Visible" />
+        <framework:BindingProxy x:Key="proxy" Data="{Binding}" />
+    </UserControl.Resources>
     <Grid>
-          
+        <DockPanel Margin="30" 
+            Background="{DynamicResource AccentColorBrush}"
+            LastChildFill="True">
+            <TextBlock FontWeight="Bold"
+                   FontSize="24"
+                   DockPanel.Dock="Top">Permissions</TextBlock>
+            <TextBlock 
+            DockPanel.Dock="Top"
+            FontWeight="Bold"
+                       TextWrapping="Wrap"
+                       Text="List of accounts.">
+            </TextBlock>
+
+            <StackPanel 
+                Margin="0,10,0,0"
+                DockPanel.Dock="Top"
+                Orientation="Horizontal"
+                HorizontalAlignment="Left">
+
+            </StackPanel>
+
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                    <Button
+                        HorizontalAlignment="Right"
+                        Margin="30"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource AccentColorBrush}"
+                        Command="{Binding EditPermissionsCommand}">
+                        <TextBlock><Run Text="Edit permissions"></Run></TextBlock>
+                    </Button>                  
+                </StackPanel>
+
+                <ScrollViewer
+                    Margin="0,20,0,0"
+                    DockPanel.Dock="Top"
+                    Background="{DynamicResource AccentColorBrush}"
+                    RenderOptions.ClearTypeHint="Enabled"
+                    TextOptions.TextFormattingMode="Display">
+
+                    <ScrollViewer.Resources>
+                        <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource OnePageAppMetroCheckBox}">
+                        </Style>
+                        <Style TargetType="{x:Type DataGridColumnHeadersPresenter}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="DataGridColumnHeadersPresenter">
+                                        <Grid>
+                                            <Border Background="Transparent"
+                                                    BorderBrush="{DynamicResource GrayBrush5}"
+                                                    BorderThickness="0 0 0 0"
+                                                    IsHitTestVisible="False" />
+                                            <ItemsPresenter />
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ScrollViewer.Resources>
+
+                    <GroupBox Header="{Binding ElementName=MetroDataGrid, Path=Items.Count, Mode=OneWay}"
+                              HeaderStringFormat="{}{0} Users">
+                        <DataGrid x:Name="MetroDataGrid"
+                                  Margin="2"
+                                  HorizontalAlignment="Stretch" 
+                                  HorizontalContentAlignment="Stretch" 
+                                  ColumnWidth="*"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False"
+                                  CanUserReorderColumns="False"
+                                  CanUserResizeColumns="False"
+                                  CanUserResizeRows="False"
+                                  EnableColumnVirtualization="True"
+                                  EnableRowVirtualization="True"                                  
+                                  IsReadOnly="True"
+                                  SelectionMode="Single"
+                                  SelectedItem="{Binding SelectedItem}"
+                                  ItemsSource="{Binding Users}"
+                                  RenderOptions.ClearTypeHint="Enabled"
+                                  SelectionUnit="FullRow"
+                                  TextOptions.TextFormattingMode="Display">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Login}" Header="Login" Width="70"/>
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Name" MinWidth="130" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+                </ScrollViewer>
+            </DockPanel>
+        </DockPanel>
+        <!--<Grid Background="Gray" Opacity=".7" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" 
+                  Visibility="{Binding IsLoading, Converter={StaticResource BoolToVis}}" >
+            <controls:ProgressRing IsActive="True" />
+        </Grid>-->
     </Grid>
 </UserControl>

@@ -9,4 +9,9 @@ namespace OnePageApp.Framework
     public class NavigationInfoEvent : PubSubEvent<string>
     {
     }
+
+    public class RefreshDataEvent: PubSubEvent<string>
+    {
+
+    }
 }

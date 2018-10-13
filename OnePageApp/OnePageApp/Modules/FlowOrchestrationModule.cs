@@ -65,7 +65,7 @@ namespace OnePageApp.Modules
                     }
                     break;
 
-                case nameof(Views.Accounts):
+                case nameof(Views.Users):
                 case nameof(Views.Permissions):
                 case nameof(Views.Contracts):
                 case nameof(Views.Settings):
@@ -83,6 +83,7 @@ namespace OnePageApp.Modules
         {
             if (obj.Result == false)
             {
+                // navigation errors
                 Logs.Log.Add(obj.Error);
             }
             else

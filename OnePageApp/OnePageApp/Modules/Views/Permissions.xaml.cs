@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using OnePageApp.Modules.ViewModels;
+using System.Windows.Controls;
 
 namespace OnePageApp.Modules.Views
 {
@@ -7,9 +8,10 @@ namespace OnePageApp.Modules.Views
     /// </summary>
     public partial class Permissions : UserControl
     {
-        public Permissions()
+        public Permissions(PermissionViewModel viewModel)
         {
             InitializeComponent();
+            this.DataContext = viewModel;
         }
     }
 }
