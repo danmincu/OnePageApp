@@ -143,8 +143,18 @@
     <Compile Include="Modules\Views\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\BasePermission.cs" />
+    <Compile Include="Services\BaseUser.cs" />
+    <Compile Include="Services\Branch.cs" />
+    <Compile Include="Services\Examples\UserLdapServiceExample.cs" />
+    <Compile Include="Services\IPermissions.cs" />
+    <Compile Include="Services\IUserLdapService.cs" />
     <Compile Include="Services\IUserService.cs" />
-    <Compile Include="Services\UserServiceExample.cs" />
+    <Compile Include="Services\Examples\PermissionsServiceExample.cs" />
+    <Compile Include="Services\Portofolio.cs" />
+    <Compile Include="Services\Unit.cs" />
+    <Compile Include="Services\User.cs" />
+    <Compile Include="Services\Examples\UserServiceExample.cs" />
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>

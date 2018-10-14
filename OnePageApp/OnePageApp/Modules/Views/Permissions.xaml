@@ -100,7 +100,8 @@
                                   TextOptions.TextFormattingMode="Display">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Login}" Header="Login" Width="70"/>
-                                <DataGridTextColumn Binding="{Binding Name}" Header="Name" MinWidth="130" />
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Name" MinWidth="100" />
+                                <DataGridTextColumn Binding="{Binding FlatPermissions}" Header="Permissions" MinWidth="130" />
                             </DataGrid.Columns>
                         </DataGrid>
                     </GroupBox>

@@ -21,7 +21,7 @@ namespace OnePageApp.Modules.ViewModels
         IUserService userService;
         IChildWindowLauncher childWindowLauncher;
         IDialogCoordinator dialogCoordinator;
-        IUserLdapService userLdapService;
+        IPermissions permissionsService;
         private DelegateCommand addUsersCommand;
         private DelegateCommand editPermissionsCommand;
 
@@ -30,14 +30,14 @@ namespace OnePageApp.Modules.ViewModels
             AppSettings appSettings,
             IEventAggregator eventAggregator,
             IUserService userService,
-            IUserLdapService userLdapService,
+            IPermissions permissionsService,
             IChildWindowLauncher childWindowLauncher)
         {
             this.appSettings = appSettings;
             this.eventAggregator = eventAggregator;
             this.userService = userService;
             this.dialogCoordinator = dialogCoordinator;
-            this.userLdapService = userLdapService;
+            this.permissionsService = permissionsService;
             this.childWindowLauncher = childWindowLauncher;
             this.CanEditPermission = false;
 
@@ -92,21 +92,19 @@ namespace OnePageApp.Modules.ViewModels
         {
             try
             {
-                var viewModel = new EditPermissionModel(appSettings, this.userLdapService, this.SelectedItem);
+                var user = this.selectedItem;
+                if (user == null)
+                    return;
+
+                var viewModel = new EditPermissionModel(appSettings, this.permissionsService, user);
                 var result = await childWindowLauncher.ShowChildWindowAsync(viewModel);
 
                 if (!result)
-                {
-                    await dialogCoordinator.ShowMessageAsync(this, "Failed", "You must edit the permissions!", MessageDialogStyle.Affirmative);
                     return;
-                }
-
-                //save to db
-                //this.userService.UpdateUserPermissions(null);
-
-                //udate screen                
-                //this.Users.Remove(user);
-                //this.Users.Add(user)
+                
+                //save the permissions to the database
+                this.userService.UpdateUserPermissions(user);
+               
             }
             catch (Exception e)
             {
