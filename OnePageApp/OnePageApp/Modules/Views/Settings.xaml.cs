@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using OnePageApp.Modules.ViewModels;
+using System.Windows.Controls;
 
 namespace OnePageApp.Modules.Views
 {
@@ -7,9 +8,10 @@ namespace OnePageApp.Modules.Views
     /// </summary>
     public partial class Settings : UserControl
     {
-        public Settings()
+        public Settings(SettingsViewModel settingsViewModel)
         {
             InitializeComponent();
+            this.DataContext = settingsViewModel;
         }
     }
 }

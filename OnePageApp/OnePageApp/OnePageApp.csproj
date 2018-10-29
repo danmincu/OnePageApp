@@ -112,8 +112,8 @@
     <Compile Include="Modules\ViewModels\EditPermissionModel.cs" />
     <Compile Include="Modules\ViewModels\AddUserModel.cs" />
     <Compile Include="Modules\ViewModels\PermissionViewModel.cs" />
+    <Compile Include="Modules\ViewModels\SettingsViewModel.cs" />
     <Compile Include="Modules\ViewModels\UsersViewModel.cs" />
-    <Compile Include="Modules\ViewModels\BaseSyncViewModel.cs" />
     <Compile Include="Modules\ViewModels\ChildWindowLauncher.cs" />
     <Compile Include="Modules\ViewModels\Converters.cs" />
     <Compile Include="Modules\ViewModels\MenuItem.cs" />

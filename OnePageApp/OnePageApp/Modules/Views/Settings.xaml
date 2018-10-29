@@ -78,24 +78,9 @@
             </StackPanel.Resources>
             <Label Content="Configuration items:"/>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Aaaa"></TextBlock>
-                <ComboBox  x:Name="comboBox" 
-                      ItemsSource="{Binding A}"
-                      SelectedItem="{Binding SelectedA}"
-                      IsEditable="True"
-                      IsTextSearchEnabled="True"
-                      IsTextSearchCaseSensitive="False"
-                      TextSearch.TextPath="Text">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Text}"></TextBlock>
-                                <TextBlock Text=" : "></TextBlock>
-                                <TextBlock Text="{Binding ItemType}"></TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
+                <TextBlock Text="ConnectionString"></TextBlock>
+                <TextBox  x:Name="connectionString" Width="380" Padding="4" Text="{Binding ConnectionString, Mode=TwoWay}">
+                </TextBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
@@ -192,7 +177,7 @@
                 HorizontalAlignment="Right"
                 Padding="50,10,50,10"
                 FontWeight="DemiBold"
-                Command="{Binding SaveDefaultsCommand}"
+                Command="{Binding SaveSettingsCommand}"
                 Content="Save"
                 IsDefault="True"
                 Visibility="{Binding GetConfigSuccess,Converter={StaticResource b2v}}"/>
